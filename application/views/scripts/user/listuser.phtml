@@ -1,0 +1,12 @@
+<?php
+if (count($this->paginator)): ?>
+<ul>
+<?php foreach ($this->paginator as $item): ?>
+    <li><?php echo $item['username']; ?></li>
+<?php endforeach; ?>
+</ul>
+<?php endif; ?>
+ 
+<?php echo $this->paginationControl($this->paginator,
+                                    'Sliding',
+                                    'pagination_controls.phtml'); ?>
