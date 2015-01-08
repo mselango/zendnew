@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>ZF1 project</title>
+         <?php echo $this->headLink()->appendStylesheet('/css/style.css')  ?>
+         
+
+    </head>
+    <body>    
+        <h1>Header Content</h1>
+        <div id="message_box">
+            <?php echo isset($this->messages[0]) ? $this->messages[0] : ""; ?>
+        </div>  
+        <?php echo $this->layout()->content; ?>
+        <?php // echo $this->render('partials/footer.phtml'); ?>
+    </body>
+</html>

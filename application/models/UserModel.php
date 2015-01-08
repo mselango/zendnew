@@ -29,5 +29,16 @@ class Application_Model_UserModel {
     public function list_user(){
         return $adapter = $this->db->select()->from('users11');   
     }
-
+    
+    public function checkLogin($data){
+       // print_r($data);exit;
+        $res=array();
+        $user = $data['name'];
+        $pass = $data['password'];
+        $sql  = "select username,password from users11 where username='$user' and password='$pass'";
+        $res  = $this->db->fetchRow($sql);
+        
+        return $res;
+        
+    }
 }

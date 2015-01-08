@@ -52,8 +52,6 @@ class StudentController extends Zend_Controller_Action {
                 $this->smodel->updateStudent($data);
             }
         }
-
-
         $this->view->form = $studentform;
     }
 
@@ -61,7 +59,11 @@ class StudentController extends Zend_Controller_Action {
         $uform = new Application_Form_Upload();
 
         if ($this->getRequest()->isPost()) {
+            $data=$this->getRequest()->getPost();
+            if($uform->isValid($data))
+            {
             $upload = new Zend_File_Transfer_Adapter_Http();
+            $upload->addValidator('Size', false, 200);
             $upload->setDestination(APPLICATION_PATH . '/data/');
 
             try {
@@ -72,6 +74,7 @@ class StudentController extends Zend_Controller_Action {
             } catch (Zend_File_Transfer_Exception $e) {
                 echo $e->message();
             }
+        }
         }
         $this->view->form = $uform;
     }
