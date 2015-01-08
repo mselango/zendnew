@@ -1,4 +1,5 @@
 <?php
+//template example: http://www.greenacorn-websolutions.com/php/using-the-zend-framework-layout.php
 
 class UserController extends Zend_Controller_Action {
 
@@ -7,7 +8,8 @@ class UserController extends Zend_Controller_Action {
     }
 
     public function indexAction() {
-
+        //$this->layout()->setLayout('layout');
+        $this->_helper->layout->setLayout('layout');
         if ($this->getRequest()->isPost()) {
             $data = $this->getRequest()->getPost();
             $this->umodel->insert_user($data);
